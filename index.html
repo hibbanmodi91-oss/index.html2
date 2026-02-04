@@ -1,1 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Hifza 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #000;
+  color: white;
+  text-align: center;
+}
+
+section {
+  min-height: 100vh;
+  display: none;
+  position: relative;
+}
+
+section.active {
+  display: block;
+}
+
+button {
+  padding: 12px 28px;
+  border: none;
+  border-radius: 30px;
+  background: crimson;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* ---------- OPENING SLIDER ---------- */
+.slider {
+  position: absolute;
+  inset: 0;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1.5s ease;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+.overlay {
+  position: relative;
+  z-index: 2;
+  background: rgba(0,0,0,0.4);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.title {
+  font-size: 2.6em;
+  margin-bottom: 10px;
+  animation: fadeUp 2s ease;
+}
+
+.subtitle {
+  font-size: 1.1em;
+  margin-bottom: 25px;
+  animation: fadeUp 3s ease;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* FLOATING CUTE MIX */
+.floating span {
+  position: absolute;
+  font-size: 22px;
+  animation: floatMix 8s linear infinite;
+  opacity: 0.8;
+}
+
+.floating span:nth-child(1) { left: 15%; animation-delay: 0s; }
+.floating span:nth-child(2) { left: 30%; animation-delay: 2s; }
+.floating span:nth-child(3) { left: 50%; animation-delay: 4s; }
+.floating span:nth-child(4) { left: 70%; animation-delay: 1s; }
+.floating span:nth-child(5) { left: 85%; animation-delay: 3s; }
+
+@keyframes floatMix {
+  from { bottom: -40px; }
+  to { bottom: 110%; }
+}
+
+/* LETTER */
+.letter {
+  max-width: 600px;
+  margin: 80px auto;
+  background: rgba(255,255,255,0.1);
+  padding: 25px;
+  border-radius: 20px;
+  line-height: 1.6;
+}
+
+/* PUZZLE */
+input {
+  padding: 12px;
+  border-radius: 25px;
+  border: none;
+  margin-top: 15px;
+  width: 70%;
+  text-align: center;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🌸 OPENING PAGE -->
+<section id="page1" class="active">
+  <div class="slider">
+    <img src="cat1.jpg" class="slide active">
+    <img src="cat2.jpg" class="slide">
+    <img src="cat3.jpg" class="slide">
+  </div>
+
+  <div class="floating">
+    <span>🐱</span>
+    <span>❤️</span>
+    <span>🐾</span>
+    <span>💖</span>
+    <span>😺</span>
+  </div>
+
+  <div class="overlay">
+    <h1 class="title">Hey Hifza 💖</h1>
+    <p class="subtitle">
+      I made this little world<br>
+      with smiles, care, and feelings…<br>
+      from <b>Hibbaan</b> 🐾
+    </p>
+    <button onclick="next(2)">Tap to Begin 💌</button>
+  </div>
+</section>
+
+<!-- 💕 MESSAGE -->
+<section id="page2">
+  <div class="overlay">
+    <h2>You Matter ❤️</h2>
+    <p style="margin:20px;">
+      Some people make life softer without trying.<br>
+      You are one of them.
+    </p>
+    <button onclick="next(3)">Next</button>
+  </div>
+</section>
+
+<!-- ✉️ LETTER -->
+<section id="page3">
+  <div class="overlay">
+    <h2>A Letter For You ✨</h2>
+    <div class="letter">
+      <p>
+        Dear <b>Hifza</b>,<br><br>
+        Somewhere between small talks and quiet smiles,  
+        you became important to me.<br><br>
+
+        This website isn’t just code —  
+        it’s a soft reflection of how gently  
+        you stay in my thoughts.<br><br>
+
+        Always smiling,<br>
+        <b>Hibbaan</b> ❤️
+      </p>
+    </div>
+    <button onclick="next(4)">Unlock Something 🧩</button>
+  </div>
+</section>
+
+<!-- 🧩 PUZZLE -->
+<section id="page4">
+  <div class="overlay">
+    <h2>Small Puzzle 🐱</h2>
+    <p>Type the one name that makes me smile the most</p>
+    <input id="answer" placeholder="Your answer">
+    <br><br>
+    <button onclick="check()">Unlock 💖</button>
+  </div>
+</section>
+
+<!-- 📸 MEMORIES -->
+<section id="page5">
+  <div class="overlay">
+    <h2>Memories ✨</h2>
+    <p style="margin:20px;">
+      • First conversation 💬<br>
+      • That one smile 😊<br>
+      • Every little moment 🌸
+    </p>
+    <button onclick="next(6)">Final</button>
+  </div>
+</section>
+
+<!-- ❤️ FINAL -->
+<section id="page6">
+  <div class="overlay">
+    <h1>Happy Valentine’s Day ❤️</h1>
+    <p style="margin:15px;">
+      Always special,<br>
+      always you — <b>Hifza</b>
+    </p>
+  </div>
+</section>
+
+<script>
+/* PAGE SWITCH */
+function next(n) {
+  document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+  document.getElementById('page' + n).classList.add('active');
+}
+
+/* PUZZLE */
+function check() {
+  const ans = document.getElementById('answer').value.toLowerCase();
+  if (ans === "hifza") {
+    next(5);
+  } else {
+    alert("Try again 🐱💖");
+  }
+}
+
+/* SLIDER */
+let slides = document.querySelectorAll(".slide");
+let index = 0;
+
+setInterval(() => {
+  slides[index].classList.remove("active");
+  index = (index + 1) % slides.length;
+  slides[index].classList.add("active");
+}, 3500);
+</script>
+
+</body>
+  </html>
