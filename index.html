@@ -39,7 +39,9 @@
     /* Gallery */
     .gallery{display:grid;gap:15px;}
     .memory{background:#fff;border-radius:18px;padding:10px;box-shadow:0 10px 25px rgba(0,0,0,.2);}    
-    .memory img{width:100%;border-radius:14px;}
+    .memory img{width:80%;max-width:320px;border-radius:18px;box-shadow:0 10px 25px rgba(0,0,0,.25)}
+.heart-pulse{animation:pulse .6s ease}
+@keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.06)}100%{transform:scale(1)}}
     .caption{text-align:center;margin-top:8px;color:#ff5a8a;font-weight:500;}
 
     /* Quiz */
@@ -77,8 +79,30 @@
     @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
     @keyframes floatCat{0%,100%{transform:translateY(0);}50%{transform:translateY(-15px);}}
     @keyframes sign{from{opacity:0;transform:translateX(-20px);}to{opacity:1;transform:translateX(0);}}
-  </style></head>
-<body><div class="hearts"></div><audio id="bgMusic" loop>
+  .memory-slider{position:relative;max-width:90%;margin:30px auto;overflow:hidden}
+.slider-track{display:flex;transition:transform .5s ease}
+.memory{min-width:100%;box-sizing:border-box;text-align:center}
+.memory img{width:80%;max-width:320px;border-radius:18px;box-shadow:0 10px 25px rgba(0,0,0,.25)}
+.caption{margin-top:12px;font-size:16px;color:#b0004b}
+.nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.7);border:none;font-size:24px;padding:6px 12px;border-radius:50%;cursor:pointer}
+.prev{left:5px}.next{right:5px}
+
+#soundOverlay{position:fixed;inset:0;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;z-index:9999}
+.sound-box{background:#fff;padding:18px 26px;border-radius:30px;font-size:18px;color:#b0004b;box-shadow:0 10px 30px rgba(0,0,0,.3);animation:pulse 1.5s infinite}
+
+.final-line{text-align:center;margin:40px 20px;font-family:'Cursive';font-size:20px;color:#b0004b;opacity:0;animation:fadeIn 2s ease forwards;animation-delay:2s}
+@keyframes fadeIn{to{opacity:1}}
+
+.final-line{text-align:center;margin:40px 20px;font-family:'Cursive';font-size:20px;color:#b0004b;opacity:0;animation:fadeIn 2s ease forwards;animation-delay:2s}
+.closing{font-size:48px;text-align:center;margin-bottom:60px;opacity:0;animation:closeAnim 3s ease forwards;animation-delay:4s}
+@keyframes fadeIn{to{opacity:1}}
+@keyframes closeAnim{0%{opacity:0;transform:translateY(20px) scale(.8)}50%{opacity:1;transform:translateY(0) scale(1.1)}100%{opacity:1;transform:translateY(0) scale(1)}}
+
+</style></head>
+<body>
+<div id="soundOverlay" onclick="enableSound()">
+  <div class="sound-box">🔊 Tap to enable sound</div>
+</div><div class="hearts"></div><audio id="bgMusic" id="bgMusic" loop>
   <source src="music.mp3" type="audio/mpeg">
 </audio><div class="container"><!-- PAGE 1 --><section class="active">
   <h1>For Hifza 💖</h1>
@@ -89,10 +113,49 @@
   <button onclick="next(1)">Open Surprise</button>
 </section><!-- PAGE 2 --><section>
   <h1>Our Memories 📸</h1>
-  <div class="gallery">
-    <div class="memory"><img src="img1.jpg"><div class="caption">A moment I’ll never forget 💕</div></div>
-    <div class="memory"><img src="img2.jpg"><div class="caption">Your smile makes everything better 🌸</div></div>
-    <div class="memory"><img src="img3.jpg"><div class="caption">Forever my favorite memory 💖</div></div>
+  <div class="memory-slider">
+  <button class="nav prev" onclick="slide(-1)">❮</button>
+  <div class="slider-track" id="sliderTrack">
+    <div class="memory">
+      <img src="placeholder1.jpg" alt="Future memory">
+      <div class="caption">A memory yet to be created — the day we sit and talk for hours, smiling without any reason 💗</div>
+    </div>
+    <div class="memory">
+      <img src="placeholder2.jpg" alt="Future memory">
+      <div class="caption">That peaceful moment when everything feels calm just because you’re there 🌸</div>
+    </div>
+    <div class="memory">
+      <img src="placeholder3.jpg" alt="Future memory">
+      <div class="caption">A memory where laughter is loud, worries are silent, and hearts feel light ✨</div>
+    </div>
+    <div class="memory">
+      <img src="placeholder4.jpg" alt="Future memory">
+      <div class="caption">The day we create a memory worth remembering for a lifetime 🤍</div>
+    </div>
+    <div class="memory">
+      <img src="placeholder5.jpg" alt="Future memory">
+      <div class="caption">A beautiful chapter that hasn’t happened yet — but is already special to me 💖</div>
+    </div>
+  </div>
+  <button class="nav next" onclick="slide(1)">❯</button>
+</div>
+    </div>
+    <div class="memory">
+      <img src="placeholder2.jpg" alt="Future memory">
+      <div class="caption">That peaceful moment when everything feels calm just because you’re there 🌸</div>
+    </div>
+    <div class="memory">
+      <img src="placeholder3.jpg" alt="Future memory">
+      <div class="caption">A memory where laughter is loud, worries are silent, and hearts feel light ✨</div>
+    </div>
+    <div class="memory">
+      <img src="placeholder4.jpg" alt="Future memory">
+      <div class="caption">The day we create a memory worth remembering for a lifetime 🤍</div>
+    </div>
+    <div class="memory">
+      <img src="placeholder5.jpg" alt="Future memory">
+      <div class="caption">A beautiful chapter that hasn’t happened yet — but is already special to me 💖</div>
+    </div>
   </div>
   <button onclick="next(2)">Next</button>
 </section><!-- PAGE 3 QUIZ --><section>
@@ -114,8 +177,8 @@
     </div>
     <div class="question">
       <p>3️⃣ From now, what do you need to stop doing?</p>
-      <button onclick="check(this,false)">Overthinking 💭</button>
-      <button onclick="check(this,true)">Smoking 🚭</button>
+      <button onclick="check(this,true)">Overthinking 💭</button>
+      <button onclick="check(this,false)">crying 😭</button>
       <button onclick="check(this,false)">Smiling 😊</button>
       <button onclick="check(this,false)">Dreaming ✨</button>
     </div>
@@ -158,5 +221,20 @@
   setInterval(()=>{const h=document.createElement('div');h.className='heart';h.innerHTML='💗';h.style.left=Math.random()*100+'vw';h.style.animationDuration=4+Math.random()*3+'s';document.querySelector('.hearts').appendChild(h);setTimeout(()=>h.remove(),7000);},500);
 
   document.addEventListener('click',()=>{const m=document.getElementById('bgMusic');if(m.paused)m.play();},{once:true});
-</script></body>
-      </html>
+let index=0;
+const track=document.getElementById('sliderTrack');
+let autoSlide=setInterval(()=>slide(1),3500);
+
+function slide(dir){const total=track.children.length;index=(index+dir+total)%total;track.style.transform=`translateX(-${index*100}%)`;const img=track.children[index].querySelector('img');img.classList.remove('heart-pulse');void img.offsetWidth;img.classList.add('heart-pulse');}index=(index+dir+total)%total;track.style.transform=`translateX(-${index*100}%)`;}
+
+// pause on touch / hover
+['touchstart','mouseenter'].forEach(e=>track.addEventListener(e,()=>clearInterval(autoSlide)));
+['touchend','mouseleave'].forEach(e=>track.addEventListener(e,()=>autoSlide=setInterval(()=>slide(1),3500)));
+
+const music=document.getElementById('bgMusic');
+function enableSound(){music.volume=0;music.play();let vol=0;const fade=setInterval(()=>{if(vol<0.5){vol+=0.02;music.volume=vol}else clearInterval(fade)},200);document.getElementById('soundOverlay').style.display='none';}music.volume=0;music.play();let vol=0;const fade=setInterval(()=>{if(vol<0.5){vol+=0.02;music.volume=vol}else clearInterval(fade)},200);
+
+</script><div class="final-line">Thank you for reading this till the end… it truly means everything to me 💗</div>
+<div class="closing">🌸</div>
+</body>
+  </html>
