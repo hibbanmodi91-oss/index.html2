@@ -1,58 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>For Hifza 🌸</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Hifza 💗</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Patrick+Hand&display=swap" rel="stylesheet">
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{margin:0;padding:0;box-sizing:border-box}
 
 body{
   font-family:'Patrick Hand',cursive;
-  min-height:100vh;
   background:linear-gradient(180deg,#8b2f4b,#f2cbd6);
   color:#5a1025;
   overflow-x:hidden;
 }
 
-section{
-  min-height:100vh;
+/* OVERLAY */
+#overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
   display:flex;
-  flex-direction:column;
   align-items:center;
   justify-content:center;
+  z-index:9999;
+}
+#overlay button{
+  padding:16px 32px;
+  border:none;
+  border-radius:40px;
+  background:#fff;
+  color:#b0004b;
+  font-size:18px;
+  cursor:pointer;
+  animation:pulse 1.5s infinite;
+}
+@keyframes pulse{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.08)}
+  100%{transform:scale(1)}
+}
+
+/* SECTIONS */
+section{
+  min-height:100vh;
   padding:30px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
   text-align:center;
 }
 
 h1{
   font-family:'Pacifico',cursive;
   font-size:36px;
-  margin-bottom:10px;
+  margin-bottom:12px;
 }
 
 p{
   font-size:18px;
-  line-height:1.6;
-  max-width:650px;
-  margin:auto;
+  max-width:700px;
+  line-height:1.7;
 }
 
-button{
-  margin-top:20px;
-  padding:12px 26px;
-  border:none;
-  border-radius:30px;
-  background:#c2185b;
-  color:#fff;
-  font-size:16px;
-  cursor:pointer;
-}
-
-/* CAT ANIMATION */
+/* CATS */
 .cats{
   display:flex;
   gap:20px;
@@ -63,221 +77,205 @@ button{
   animation:float 3s ease-in-out infinite;
 }
 .cats img:nth-child(2){animation-delay:1s}
-
 @keyframes float{
   0%,100%{transform:translateY(0)}
   50%{transform:translateY(-15px)}
 }
 
-/* SOUND OVERLAY */
-#soundOverlay{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.5);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  z-index:9999;
-}
-#soundOverlay div{
-  background:#fff;
-  padding:16px 28px;
-  border-radius:30px;
-  color:#b0004b;
-  animation:pulse 1.5s infinite;
-}
-@keyframes pulse{
-  0%{transform:scale(1)}
-  50%{transform:scale(1.05)}
-  100%{transform:scale(1)}
-}
-
 /* MEMORY SLIDER */
 .memory-slider{
-  width:100%;
   max-width:360px;
-  position:relative;
-  margin-top:30px;
   overflow:hidden;
+  margin-top:30px;
 }
-.slider-track{
+.track{
   display:flex;
-  transition:transform .5s ease;
+  transition:.5s ease;
 }
-.memory{min-width:100%}
+.memory{
+  min-width:100%;
+}
 .memory img{
   width:100%;
   border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,.3);
+}
+.caption{margin-top:10px}
+
+/* MCQ */
+.quiz{
+  background:#fff;
+  padding:25px;
+  border-radius:20px;
+  max-width:600px;
   box-shadow:0 10px 30px rgba(0,0,0,.25);
 }
-.caption{
-  margin-top:12px;
-  font-size:16px;
-}
-
-.nav{
-  position:absolute;
-  top:50%;
-  transform:translateY(-50%);
-  background:#fff;
+.q{margin-bottom:20px}
+.q h3{margin-bottom:10px}
+.q button{
+  width:100%;
+  margin:6px 0;
+  padding:10px;
   border:none;
-  border-radius:50%;
-  padding:6px 10px;
-  font-size:20px;
+  border-radius:20px;
+  background:#f2cbd6;
+  cursor:pointer;
 }
-.prev{left:-5px}
-.next{right:-5px}
+.correct{background:#c8e6c9 !important}
+.wrong{background:#ffcdd2 !important}
 
 /* LETTER */
 .letter{
   background:#fffdf7;
-  padding:25px;
+  padding:30px;
   border-radius:20px;
   box-shadow:0 10px 30px rgba(0,0,0,.25);
-  max-width:700px;
+  max-width:750px;
 }
-
 .letter p{
   margin-bottom:14px;
   opacity:0;
-  animation:fadeIn 1.2s forwards;
+  animation:fade 1.2s forwards;
 }
-
-.letter p:nth-child(1){animation-delay:.5s}
-.letter p:nth-child(2){animation-delay:1.5s}
-.letter p:nth-child(3){animation-delay:2.5s}
-.letter p:nth-child(4){animation-delay:3.5s}
-.letter p:nth-child(5){animation-delay:4.5s}
-.letter p:nth-child(6){animation-delay:5.5s}
-.letter p:nth-child(7){animation-delay:6.5s}
-.letter p:nth-child(8){animation-delay:7.5s}
-.letter p:nth-child(9){animation-delay:8.5s}
-.letter p:nth-child(10){animation-delay:9.5s}
-.letter p:nth-child(11){animation-delay:10.5s}
-.letter p:nth-child(12){animation-delay:11.5s}
-.letter p:nth-child(13){animation-delay:12.5s}
-
-@keyframes fadeIn{to{opacity:1}}
+.letter p:nth-child(n){
+  animation-delay:calc(var(--i)*.35s);
+}
+@keyframes fade{to{opacity:1}}
 
 .final-line{
   margin-top:40px;
   font-size:20px;
-  opacity:0;
-  animation:fadeIn 2s forwards;
-  animation-delay:1s;
 }
-
-.closing{
+.flower{
   font-size:48px;
   margin-top:20px;
   opacity:0;
-  animation:fadeIn 2s forwards;
-  animation-delay:3s;
+  animation:fade 2s forwards;
+  animation-delay:2s;
 }
 </style>
 </head>
 
 <body>
 
-<!-- MUSIC -->
-<div id="soundOverlay" onclick="enableSound()">
-  <div>🔊 Tap to enable sound</div>
+<!-- OVERLAY -->
+<div id="overlay">
+  <button onclick="start()">Tap to Begin 💗</button>
 </div>
-<audio id="bgMusic" src="music.mp3" loop></audio>
+
+<audio id="music" src="music.mp3" loop></audio>
 
 <!-- OPENING -->
 <section>
   <div class="cats">
-    <img src="cat1.gif" alt="cat">
-    <img src="cat2.gif" alt="cat">
+    <img src="cat1.gif">
+    <img src="cat2.gif">
   </div>
   <h1>Hey Hifza 💗</h1>
-  <p>I made this little space with care, honesty, and feelings — from Hibbaan.</p>
-  <button onclick="scrollToSection(1)">Begin 🌸</button>
+  <p>I made this little space with honesty, care, and feelings — from Hibbaan.</p>
 </section>
 
 <!-- MEMORIES -->
 <section>
-  <h1>Some Memories 🌷</h1>
-  <p>Some memories are waiting to happen…</p>
-
-  <div class="memory-slider">
-    <button class="nav prev" onclick="slide(-1)">❮</button>
-    <div class="slider-track" id="sliderTrack">
-      <div class="memory">
-        <img src="placeholder1.jpg">
-        <div class="caption">A memory yet to be created — just us talking for hours 💗</div>
-      </div>
-      <div class="memory">
-        <img src="placeholder2.jpg">
-        <div class="caption">A calm moment where everything feels peaceful 🌸</div>
-      </div>
-      <div class="memory">
-        <img src="placeholder3.jpg">
-        <div class="caption">A day full of laughter and light ✨</div>
-      </div>
-      <div class="memory">
-        <img src="placeholder4.jpg">
-        <div class="caption">A chapter worth remembering forever 🤍</div>
-      </div>
-      <div class="memory">
-        <img src="placeholder5.jpg">
-        <div class="caption">A future moment already special to me 💖</div>
-      </div>
-    </div>
-    <button class="nav next" onclick="slide(1)">❯</button>
+<h1>Memories 🌷</h1>
+<div class="memory-slider">
+  <div class="track" id="track">
+    <div class="memory"><img src="placeholder1.jpg"><div class="caption">A memory yet to be created 💗</div></div>
+    <div class="memory"><img src="placeholder2.jpg"><div class="caption">A calm moment waiting 🌸</div></div>
+    <div class="memory"><img src="placeholder3.jpg"><div class="caption">Laughter without reason ✨</div></div>
+    <div class="memory"><img src="placeholder4.jpg"><div class="caption">A chapter worth remembering 🤍</div></div>
+    <div class="memory"><img src="placeholder5.jpg"><div class="caption">A future moment already special 💖</div></div>
   </div>
+</div>
 </section>
 
-<!-- LETTER -->
+<!-- MCQ -->
+<section>
+<h1>A Small Quiz 💭</h1>
+<div class="quiz">
+
+<div class="q">
+<h3>1. What do I think about all the time?</h3>
+<button onclick="wrong(this)">Food 🍕</button>
+<button onclick="correct(this)">About you 💗</button>
+<button onclick="wrong(this)">Sleep 😴</button>
+</div>
+
+<div class="q">
+<h3>2. What do I call you most?</h3>
+<button onclick="wrong(this)">Bestie</button>
+<button onclick="correct(this)">Madam Ji 🌸</button>
+<button onclick="wrong(this)">Boss</button>
+</div>
+
+<div class="q">
+<h3>3. From now, what should you stop doing?</h3>
+<button onclick="correct(this)">Overthinking 💭</button>
+<button onclick="wrong (this)">crying </button>
+<button onclick="wrong(this)">Smiling</button>
+</div>
+
+</div>
+</section>
+
+<!-- FULL LETTER -->
 <section>
 <h1>For My Heart 💌</h1>
 
 <div class="letter">
-<p>My Dear Madam Ji,</p>
-<p>I still can’t fully explain what I feel after you came into my life. The first time I saw you, my heart started beating like a bullet 🚅—fast, loud, and unstoppable.</p>
-<p>From a simple “Hi” and “Hello”, I slowly reached a place where life without you feels incomplete. You became a thought that stays with me quietly, even when everything else is loud.</p>
-<p>Whenever my mood is off, I just think about you—and somehow, in a few seconds, everything feels lighter.</p>
-<p>The trust you showed me by sharing your life, your struggles, and the pain caused by people who hurt you… that trust means more to me than words can say.</p>
-<p>I won’t lie—whenever I feel your mood is low, it hurts me deeply. I wonder what you’re thinking and what made you sad.</p>
-<p>Please don’t be sad anymore. Leave whatever hurt you in the past behind and start a new journey—with hope, peace, and strength.</p>
-<p>Take care of yourself. Please stop smoking 🚭—you are too precious to harm yourself.</p>
-<p>Keep moving closer to peace—by understanding the Qur’an and finding calm in namaz 🌷.</p>
-<p><strong>I AM HERE FOR YOU 💗 Whenever you need me.</strong></p>
-<p>And the last thing I want to say, from the deepest place in my heart—</p>
-<p><strong>I love you.</strong></p>
-<p>— Hibbaan</p>
+<p style="--i:1">My Dear Madam Ji,</p>
+
+<p style="--i:2">I still can’t fully explain what I feel after you came into my life. The first time I saw you, my heart started beating like a bullet 🚅—fast, loud, and unstoppable.</p>
+
+<p style="--i:3">From a simple “Hi” and “Hello”, I slowly reached a place where life without you feels incomplete. You became a thought that stays with me quietly, even when everything else is loud.</p>
+
+<p style="--i:4">Whenever my mood is off, I just think about you—and somehow, in a few seconds, everything feels lighter.</p>
+
+<p style="--i:5">The trust you showed me by sharing your life, your struggles, and the pain caused by people who hurt you… that trust means more to me than words can say.</p>
+
+<p style="--i:6">I won’t lie—whenever I feel your mood is low, it hurts me deeply. I wonder what you’re thinking, what made you sad, and why you cry for people who don’t truly see your worth.</p>
+
+<p style="--i:7">So today, I only want to ask you one thing—please don’t be sad anymore. Leave whatever hurt you in the past behind and start a new journey—with hope, peace, and strength.</p>
+
+<p style="--i:8">Take care of yourself. Please stop smoking 🚭—you are too precious to harm yourself. You hold a bright future full of success, growth, and happiness.</p>
+
+<p style="--i:9">Keep moving closer to peace—by understanding the Qur’an and finding calm in namaz 🌷.</p>
+
+<p style="--i:10"><strong>I AM HERE FOR YOU 💗 Whenever you need me.</strong></p>
+
+<p style="--i:11">And the last thing I want to say, from the deepest place in my heart—</p>
+
+<p style="--i:12"><strong>I love you.</strong></p>
+
+<p style="--i:13">— Hibbaan</p>
 </div>
 
 <div class="final-line">Thank you for reading this till the end… it truly means everything to me 💗</div>
-<div class="closing">🌸</div>
+<div class="flower">🌸</div>
 </section>
 
 <script>
-let index=0;
-const track=document.getElementById('sliderTrack');
+let idx=0;
+setInterval(()=>{
+  idx=(idx+1)%5;
+  document.getElementById('track').style.transform=`translateX(-${idx*100}%)`;
+},3500);
 
-function slide(d){
-  index=(index+d+track.children.length)%track.children.length;
-  track.style.transform=`translateX(-${index*100}%)`;
-}
-
-function scrollToSection(i){
-  document.querySelectorAll('section')[i].scrollIntoView({behavior:'smooth'});
-}
-
-const music=document.getElementById('bgMusic');
-function enableSound(){
-  music.volume=0;
-  music.play();
+function start(){
+  const m=document.getElementById('music');
+  m.volume=0;
+  m.play();
   let v=0;
   const fade=setInterval(()=>{
-    if(v<0.5){v+=0.02;music.volume=v}
+    if(v<0.5){v+=0.02;m.volume=v}
     else clearInterval(fade);
   },200);
-  document.getElementById('soundOverlay').style.display='none';
+  document.getElementById('overlay').style.display='none';
 }
+
+function correct(b){b.classList.add('correct')}
+function wrong(b){b.classList.add('wrong')}
 </script>
 
 </body>
-      </html>
+                          </html>
