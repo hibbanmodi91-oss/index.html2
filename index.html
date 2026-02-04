@@ -96,6 +96,7 @@ p{font-size:18px;max-width:700px;line-height:1.7}
   width:100%;
   border-radius:20px;
   box-shadow:0 10px 30px rgba(0,0,0,.3);
+  cursor:pointer;
 }
 .caption{margin-top:10px}
 
@@ -164,12 +165,27 @@ p{font-size:18px;max-width:700px;line-height:1.7}
   animation:fade 2s forwards;
   animation-delay:2s;
 }
+
+/* FULLSCREEN VIEWER */
+#viewer{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.9);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:10000;
+}
+#viewer img{
+  max-width:95%;
+  max-height:95%;
+  border-radius:20px;
+}
 </style>
 </head>
 
 <body>
 
-<!-- OVERLAY -->
 <div id="overlay">
   <button onclick="start()">Tap to Begin 💗</button>
 </div>
@@ -189,7 +205,8 @@ p{font-size:18px;max-width:700px;line-height:1.7}
 <!-- MEMORIES -->
 <section>
 <h1>Memories 🌷</h1>
-<div class="memory-slider">
+
+<div class="memory-slider" id="slider">
   <div class="track" id="track">
     <div class="memory"><img src="./memory1.jpg"><div class="caption">A memory yet to be created 💗</div></div>
     <div class="memory"><img src="./memory2.jpg"><div class="caption">A calm moment waiting 🌸</div></div>
@@ -205,7 +222,7 @@ p{font-size:18px;max-width:700px;line-height:1.7}
 </div>
 </section>
 
-<!-- MCQ -->
+<!-- QUIZ -->
 <section>
 <h1>A Small Quiz 💭</h1>
 <div class="quiz">
@@ -234,35 +251,23 @@ p{font-size:18px;max-width:700px;line-height:1.7}
 </div>
 </section>
 
-<!-- FULL LETTER -->
+<!-- LETTER (UNCHANGED) -->
 <section>
 <h1>For My Heart 💌</h1>
 
 <div class="letter">
 <p style="--i:1">My Dear Madam Ji,</p>
-
 <p style="--i:2">I still can’t fully explain what I feel after you came into my life. The first time I saw you, my heart started beating like a bullet 🚅—fast, loud, and unstoppable.</p>
-
 <p style="--i:3">From a simple “Hi” and “Hello”, I slowly reached a place where life without you feels incomplete. You became a thought that stays with me quietly, even when everything else is loud.</p>
-
 <p style="--i:4">Whenever my mood is off, I just think about you—and somehow, in a few seconds, everything feels lighter.</p>
-
 <p style="--i:5">The trust you showed me by sharing your life, your struggles, and the pain caused by people who hurt you… that trust means more to me than words can say.</p>
-
 <p style="--i:6">I won’t lie—whenever I feel your mood is low, it hurts me deeply. I wonder what you’re thinking, what made you sad, and why you cry for people who don’t truly see your worth.</p>
-
 <p style="--i:7">So today, I only want to ask you one thing—please don’t be sad anymore. Leave whatever hurt you in the past behind and start a new journey—with hope, peace, and strength.</p>
-
 <p style="--i:8">Take care of yourself. Please stop smoking 🚭—you are too precious to harm yourself. You hold a bright future full of success, growth, and happiness.</p>
-
 <p style="--i:9">Keep moving closer to peace—by understanding the Qur’an and finding calm in namaz 🌷.</p>
-
 <p style="--i:10"><strong>I AM HERE FOR YOU 💗 Whenever you need me.</strong></p>
-
 <p style="--i:11">And the last thing I want to say, from the deepest place in my heart—</p>
-
 <p style="--i:12"><strong>I love you.</strong></p>
-
 <p style="--i:13">— Hibbaan</p>
 </div>
 
@@ -270,18 +275,47 @@ p{font-size:18px;max-width:700px;line-height:1.7}
 <div class="flower">🌸</div>
 </section>
 
+<div id="viewer" onclick="this.style.display='none'">
+  <img id="viewerImg">
+</div>
+
 <script>
+/* MEMORY SLIDER */
 let idx=0;
 const track=document.getElementById('track');
 const total=5;
-
 function update(){track.style.transform=`translateX(-${idx*100}%)`;}
 function next(){idx=(idx+1)%total;update();}
 function prev(){idx=(idx-1+total)%total;update();}
 
+/* AUTO SLIDE */
+setInterval(next,4500);
+
+/* SWIPE */
+let startX=0;
+const slider=document.getElementById('slider');
+slider.addEventListener('touchstart',e=>startX=e.touches[0].clientX);
+slider.addEventListener('touchend',e=>{
+  let dx=e.changedTouches[0].clientX-startX;
+  if(dx>50) prev();
+  if(dx<-50) next();
+});
+
+/* ZOOM */
+document.querySelectorAll('.memory img').forEach(img=>{
+  img.onclick=()=>{
+    document.getElementById('viewerImg').src=img.src;
+    document.getElementById('viewer').style.display='flex';
+  };
+});
+
+/* PRELOAD */
+['memory1.jpg','memory2.jpg','memory3.jpg','memory4.jpg','memory5.jpg','catA.png','catB.png']
+.forEach(src=>{const i=new Image();i.src='./'+src});
+
+/* START */
 function start(){
-  const m=document.getElementById('music');
-  m.play();
+  document.getElementById('music').play();
   document.getElementById('overlay').style.display='none';
 }
 
