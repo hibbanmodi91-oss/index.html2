@@ -2,224 +2,282 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For Hifza 💗</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>For Hifza 🌸</title>
 
-<!-- Google Font -->
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Patrick+Hand&display=swap" rel="stylesheet">
 
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Dancing Script', cursive;
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
 body{
-  background: linear-gradient(180deg,#8b3a4a,#f3c6cc);
-  color:#fff;
+  font-family:'Patrick Hand',cursive;
+  min-height:100vh;
+  background:linear-gradient(180deg,#8b2f4b,#f2cbd6);
+  color:#5a1025;
   overflow-x:hidden;
 }
 
-/* ---------- OPENING ---------- */
-.opening{
-  height:100vh;
+section{
+  min-height:100vh;
   display:flex;
   flex-direction:column;
-  justify-content:center;
   align-items:center;
+  justify-content:center;
+  padding:30px;
   text-align:center;
-  position:relative;
 }
 
-.opening h1{
-  font-size:2.5rem;
+h1{
+  font-family:'Pacifico',cursive;
+  font-size:36px;
   margin-bottom:10px;
 }
 
-.opening p{
-  font-size:1.2rem;
-  opacity:0.9;
+p{
+  font-size:18px;
+  line-height:1.6;
+  max-width:650px;
+  margin:auto;
 }
 
-/* ---------- CATS ---------- */
-.cat{
-  position:absolute;
-  width:70px;
-  animation:float 6s ease-in-out infinite;
-  opacity:0.9;
+button{
+  margin-top:20px;
+  padding:12px 26px;
+  border:none;
+  border-radius:30px;
+  background:#c2185b;
+  color:#fff;
+  font-size:16px;
+  cursor:pointer;
 }
 
-.cat1{top:15%; left:10%;}
-.cat2{top:30%; right:12%; animation-delay:1.5s;}
-.cat3{bottom:18%; left:40%; animation-delay:3s;}
+/* CAT ANIMATION */
+.cats{
+  display:flex;
+  gap:20px;
+  margin-bottom:20px;
+}
+.cats img{
+  width:120px;
+  animation:float 3s ease-in-out infinite;
+}
+.cats img:nth-child(2){animation-delay:1s}
 
 @keyframes float{
-  0%,100%{transform:translateY(0);}
-  50%{transform:translateY(-20px);}
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-15px)}
 }
 
-/* ---------- MUSIC BUTTON ---------- */
-.sound-btn{
+/* SOUND OVERLAY */
+#soundOverlay{
   position:fixed;
-  top:15px;
-  left:50%;
-  transform:translateX(-50%);
-  background:rgba(255,255,255,0.2);
-  padding:10px 18px;
-  border-radius:30px;
-  font-size:14px;
-  backdrop-filter:blur(10px);
-  cursor:pointer;
-  z-index:10;
-}
-
-/* ---------- MEMORY SLIDER ---------- */
-.memories{
-  margin-top:40px;
-  padding:30px 0;
-}
-
-.slider{
+  inset:0;
+  background:rgba(0,0,0,.5);
   display:flex;
-  overflow-x:auto;
-  scroll-snap-type:x mandatory;
-  gap:20px;
-  padding:20px;
-}
-
-.card{
-  min-width:260px;
-  background:rgba(255,255,255,0.15);
-  border-radius:20px;
-  scroll-snap-align:center;
-  padding:15px;
-  text-align:center;
-  transition:transform 0.3s;
-}
-
-.card img{
-  width:100%;
-  border-radius:15px;
-}
-
-.card p{
-  margin-top:10px;
-  font-size:1rem;
-}
-
-/* Heart pulse */
-.pulse{
-  animation:pulse 0.6s;
-}
-
-@keyframes pulse{
-  0%{transform:scale(1);}
-  50%{transform:scale(1.08);}
-  100%{transform:scale(1);}
-}
-
-/* ---------- LETTER ---------- */
-.letter{
-  padding:40px 20px;
-  max-width:800px;
-  margin:auto;
-  line-height:1.8;
-}
-
-.line{
-  opacity:0;
-  transform:translateY(10px);
-  animation:fadeIn 1s forwards;
-}
-
-@keyframes fadeIn{
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
-
-/* ---------- END ---------- */
-.end{
-  height:60vh;
-  display:flex;
-  justify-content:center;
   align-items:center;
-  font-size:2.5rem;
-  animation:endFade 3s forwards;
+  justify-content:center;
+  z-index:9999;
+}
+#soundOverlay div{
+  background:#fff;
+  padding:16px 28px;
+  border-radius:30px;
+  color:#b0004b;
+  animation:pulse 1.5s infinite;
+}
+@keyframes pulse{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.05)}
+  100%{transform:scale(1)}
 }
 
-@keyframes endFade{
-  from{opacity:0;}
-  to{opacity:1;}
+/* MEMORY SLIDER */
+.memory-slider{
+  width:100%;
+  max-width:360px;
+  position:relative;
+  margin-top:30px;
+  overflow:hidden;
+}
+.slider-track{
+  display:flex;
+  transition:transform .5s ease;
+}
+.memory{min-width:100%}
+.memory img{
+  width:100%;
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,.25);
+}
+.caption{
+  margin-top:12px;
+  font-size:16px;
+}
+
+.nav{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:#fff;
+  border:none;
+  border-radius:50%;
+  padding:6px 10px;
+  font-size:20px;
+}
+.prev{left:-5px}
+.next{right:-5px}
+
+/* LETTER */
+.letter{
+  background:#fffdf7;
+  padding:25px;
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,.25);
+  max-width:700px;
+}
+
+.letter p{
+  margin-bottom:14px;
+  opacity:0;
+  animation:fadeIn 1.2s forwards;
+}
+
+.letter p:nth-child(1){animation-delay:.5s}
+.letter p:nth-child(2){animation-delay:1.5s}
+.letter p:nth-child(3){animation-delay:2.5s}
+.letter p:nth-child(4){animation-delay:3.5s}
+.letter p:nth-child(5){animation-delay:4.5s}
+.letter p:nth-child(6){animation-delay:5.5s}
+.letter p:nth-child(7){animation-delay:6.5s}
+.letter p:nth-child(8){animation-delay:7.5s}
+.letter p:nth-child(9){animation-delay:8.5s}
+.letter p:nth-child(10){animation-delay:9.5s}
+.letter p:nth-child(11){animation-delay:10.5s}
+.letter p:nth-child(12){animation-delay:11.5s}
+.letter p:nth-child(13){animation-delay:12.5s}
+
+@keyframes fadeIn{to{opacity:1}}
+
+.final-line{
+  margin-top:40px;
+  font-size:20px;
+  opacity:0;
+  animation:fadeIn 2s forwards;
+  animation-delay:1s;
+}
+
+.closing{
+  font-size:48px;
+  margin-top:20px;
+  opacity:0;
+  animation:fadeIn 2s forwards;
+  animation-delay:3s;
 }
 </style>
 </head>
 
 <body>
 
-<div class="sound-btn" onclick="playMusic()">🔊 Tap to enable sound</div>
-
+<!-- MUSIC -->
+<div id="soundOverlay" onclick="enableSound()">
+  <div>🔊 Tap to enable sound</div>
+</div>
 <audio id="bgMusic" src="music.mp3" loop></audio>
 
-<section class="opening">
-  <img src="cat1.png" class="cat cat1">
-  <img src="cat2.png" class="cat cat2">
-  <img src="cat3.png" class="cat cat3">
-
-  <h1>For Hifza 💗</h1>
-  <p>Made with love by Hibbaan</p>
+<!-- OPENING -->
+<section>
+  <div class="cats">
+    <img src="cat1.gif" alt="cat">
+    <img src="cat2.gif" alt="cat">
+  </div>
+  <h1>Hey Hifza 💗</h1>
+  <p>I made this little space with care, honesty, and feelings — from Hibbaan.</p>
+  <button onclick="scrollToSection(1)">Begin 🌸</button>
 </section>
 
-<section class="memories">
-  <div class="slider" id="slider">
-    <div class="card"><img src="mem1.jpg"><p>A smile that stays in my heart ✨</p></div>
-    <div class="card"><img src="mem2.jpg"><p>A moment I imagine again and again 💭</p></div>
-    <div class="card"><img src="mem3.jpg"><p>The calm you bring into my world 🌸</p></div>
-    <div class="card"><img src="mem4.jpg"><p>Every memory I wish to create with you 💕</p></div>
-    <div class="card"><img src="mem5.jpg"><p>The beginning of something beautiful 💫</p></div>
+<!-- MEMORIES -->
+<section>
+  <h1>Some Memories 🌷</h1>
+  <p>Some memories are waiting to happen…</p>
+
+  <div class="memory-slider">
+    <button class="nav prev" onclick="slide(-1)">❮</button>
+    <div class="slider-track" id="sliderTrack">
+      <div class="memory">
+        <img src="placeholder1.jpg">
+        <div class="caption">A memory yet to be created — just us talking for hours 💗</div>
+      </div>
+      <div class="memory">
+        <img src="placeholder2.jpg">
+        <div class="caption">A calm moment where everything feels peaceful 🌸</div>
+      </div>
+      <div class="memory">
+        <img src="placeholder3.jpg">
+        <div class="caption">A day full of laughter and light ✨</div>
+      </div>
+      <div class="memory">
+        <img src="placeholder4.jpg">
+        <div class="caption">A chapter worth remembering forever 🤍</div>
+      </div>
+      <div class="memory">
+        <img src="placeholder5.jpg">
+        <div class="caption">A future moment already special to me 💖</div>
+      </div>
+    </div>
+    <button class="nav next" onclick="slide(1)">❯</button>
   </div>
 </section>
 
-<section class="letter">
-  <div class="line" style="animation-delay:0s">My Dear Madam Ji,</div>
-  <div class="line" style="animation-delay:1s">I can't explain my feelings after I got you.</div>
-  <div class="line" style="animation-delay:2s">When I saw you for the first time, my heart raced like a bullet 🚅</div>
-  <div class="line" style="animation-delay:3s">Whenever my mood is off, I think about you and everything feels better.</div>
-  <div class="line" style="animation-delay:4s">Please leave the past behind and start a new journey.</div>
-  <div class="line" style="animation-delay:5s">Take care of yourself and stop smoking 🚭</div>
-  <div class="line" style="animation-delay:6s">I am here for you. Always 💗</div>
-  <div class="line" style="animation-delay:7s">I Love You.</div>
-</section>
+<!-- LETTER -->
+<section>
+<h1>For My Heart 💌</h1>
 
-<section class="end">
-  🌸
+<div class="letter">
+<p>My Dear Madam Ji,</p>
+<p>I still can’t fully explain what I feel after you came into my life. The first time I saw you, my heart started beating like a bullet 🚅—fast, loud, and unstoppable.</p>
+<p>From a simple “Hi” and “Hello”, I slowly reached a place where life without you feels incomplete. You became a thought that stays with me quietly, even when everything else is loud.</p>
+<p>Whenever my mood is off, I just think about you—and somehow, in a few seconds, everything feels lighter.</p>
+<p>The trust you showed me by sharing your life, your struggles, and the pain caused by people who hurt you… that trust means more to me than words can say.</p>
+<p>I won’t lie—whenever I feel your mood is low, it hurts me deeply. I wonder what you’re thinking and what made you sad.</p>
+<p>Please don’t be sad anymore. Leave whatever hurt you in the past behind and start a new journey—with hope, peace, and strength.</p>
+<p>Take care of yourself. Please stop smoking 🚭—you are too precious to harm yourself.</p>
+<p>Keep moving closer to peace—by understanding the Qur’an and finding calm in namaz 🌷.</p>
+<p><strong>I AM HERE FOR YOU 💗 Whenever you need me.</strong></p>
+<p>And the last thing I want to say, from the deepest place in my heart—</p>
+<p><strong>I love you.</strong></p>
+<p>— Hibbaan</p>
+</div>
+
+<div class="final-line">Thank you for reading this till the end… it truly means everything to me 💗</div>
+<div class="closing">🌸</div>
 </section>
 
 <script>
-const music=document.getElementById("bgMusic");
-function playMusic(){
+let index=0;
+const track=document.getElementById('sliderTrack');
+
+function slide(d){
+  index=(index+d+track.children.length)%track.children.length;
+  track.style.transform=`translateX(-${index*100}%)`;
+}
+
+function scrollToSection(i){
+  document.querySelectorAll('section')[i].scrollIntoView({behavior:'smooth'});
+}
+
+const music=document.getElementById('bgMusic');
+function enableSound(){
   music.volume=0;
   music.play();
   let v=0;
   const fade=setInterval(()=>{
-    if(v<0.7){
-      v+=0.05;
-      music.volume=v;
-    }else{
-      clearInterval(fade);
-    }
+    if(v<0.5){v+=0.02;music.volume=v}
+    else clearInterval(fade);
   },200);
+  document.getElementById('soundOverlay').style.display='none';
 }
-
-const slider=document.getElementById("slider");
-slider.addEventListener("scroll",()=>{
-  slider.classList.add("pulse");
-  setTimeout(()=>slider.classList.remove("pulse"),600);
-});
 </script>
 
 </body>
-  </html>
+      </html>
