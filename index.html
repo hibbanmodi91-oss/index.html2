@@ -14,9 +14,9 @@ body{
   font-family:'Patrick Hand',cursive;
   color:#5a1025;
   overflow-x:hidden;
-  animation:pageFade 1s ease;
+  animation:fadeIn 1s ease;
 }
-@keyframes pageFade{from{opacity:0}to{opacity:1}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
 
 canvas{
   position:fixed;
@@ -165,7 +165,6 @@ p{font-size:18px;max-width:700px;line-height:1.7}
   box-shadow:0 10px 30px rgba(0,0,0,.25);
   margin-bottom:20px;
 }
-
 .letter{
   display:none;
   background:#fffdf7;
@@ -209,9 +208,12 @@ p{font-size:18px;max-width:700px;line-height:1.7}
 <!-- INTRO -->
 <section class="intro">
   <div class="cats">
-    <img src="images/cat1.gif">
-    <img src="images/cat2.gif">
+    <img src="./images/cat1.gif"
+      onerror="this.onerror=null;this.src='https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif';">
+    <img src="./images/cat2.gif"
+      onerror="this.onerror=null;this.src='https://media.giphy.com/media/mlvseq9yvZhba/giphy.gif';">
   </div>
+
   <h1>Hey Hifza 💗</h1>
   <p>I made this little space with honesty, care, and feelings — from Hibbaan.</p>
 </section>
@@ -222,11 +224,11 @@ p{font-size:18px;max-width:700px;line-height:1.7}
 
 <div class="memory-slider" id="slider">
   <div class="track" id="track">
-    <div class="memory"><img src="images/placeholder1.jpg"><div class="caption">A memory yet to be created 💗</div></div>
-    <div class="memory"><img src="images/placeholder2.jpg"><div class="caption">A calm moment waiting 🌸</div></div>
-    <div class="memory"><img src="images/placeholder3.jpg"><div class="caption">Laughter without reason ✨</div></div>
-    <div class="memory"><img src="images/placeholder4.jpg"><div class="caption">A chapter worth remembering 🤍</div></div>
-    <div class="memory"><img src="images/placeholder5.jpg"><div class="caption">A future moment already special 💖</div></div>
+    <div class="memory"><img src="./images/placeholder1.jpg"><div class="caption">A memory yet to be created 💗</div></div>
+    <div class="memory"><img src="./images/placeholder2.jpg"><div class="caption">A calm moment waiting 🌸</div></div>
+    <div class="memory"><img src="./images/placeholder3.jpg"><div class="caption">Laughter without reason ✨</div></div>
+    <div class="memory"><img src="./images/placeholder4.jpg"><div class="caption">A chapter worth remembering 🤍</div></div>
+    <div class="memory"><img src="./images/placeholder5.jpg"><div class="caption">A future moment already special 💖</div></div>
   </div>
 </div>
 
@@ -288,7 +290,6 @@ p{font-size:18px;max-width:700px;line-height:1.7}
 </section>
 
 <script>
-/* slider */
 let idx=0,total=5;
 const track=document.getElementById('track');
 function update(){track.style.transform=`translateX(-${idx*100}%)`}
@@ -296,7 +297,6 @@ function nextSlide(){idx=(idx+1)%total;update()}
 function prevSlide(){idx=(idx-1+total)%total;update()}
 setInterval(nextSlide,3500);
 
-/* swipe */
 let startX=0;
 document.getElementById('slider').addEventListener('touchstart',e=>startX=e.touches[0].clientX);
 document.getElementById('slider').addEventListener('touchend',e=>{
@@ -305,7 +305,6 @@ document.getElementById('slider').addEventListener('touchend',e=>{
   if(endX-startX>50) prevSlide();
 });
 
-/* overlay */
 function start(){
   const m=document.getElementById('music');
   m.volume=0;m.play();
@@ -315,18 +314,13 @@ function start(){
   },200);
   document.getElementById('overlay').style.display='none';
 }
-
-/* letter lock */
 function openLetter(){
   document.querySelector('.lock').style.display='none';
   document.getElementById('letter').style.display='block';
 }
-
-/* quiz */
 function correct(b){b.classList.add('correct')}
 function wrong(b){b.classList.add('wrong')}
 
-/* hearts */
 const c=document.getElementById('hearts'),ctx=c.getContext('2d');
 c.width=innerWidth;c.height=innerHeight;
 let hearts=[...Array(30)].map(()=>({
@@ -349,4 +343,4 @@ let hearts=[...Array(30)].map(()=>({
 </script>
 
 </body>
-  </html>
+                   </html>
