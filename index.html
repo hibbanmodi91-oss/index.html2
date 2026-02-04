@@ -1,234 +1,155 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>For Hifza 💖</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Hifza 💖</title>  <!-- Handwritten Font -->  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600&display=swap" rel="stylesheet">  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
 
-<style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+    body{
+      font-family:'Segoe UI',sans-serif;
+      min-height:100vh;
+      background:linear-gradient(135deg,#ff758c,#ff7eb3);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow-x:hidden;
+    }
 
-body {
-  font-family: 'Segoe UI', sans-serif;
-  color: white;
-  text-align: center;
-}
+    .container{
+      width:100%;
+      max-width:420px;
+      padding:20px;
+      z-index:2;
+    }
 
-/* SECTIONS */
-section {
-  min-height: 100vh;
-  display: none;
-}
+    section{display:none;animation:fadeIn 1s ease;}
+    section.active{display:block;}
 
-section.active {
-  display: flex;
-}
+    h1{text-align:center;color:#fff;margin-bottom:20px;}
 
-/* 🌸 VALENTINE BACKGROUND */
-.valentine-bg {
-  background: linear-gradient(135deg, #ff4d6d, #ff758f, #ffb3c1);
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-}
+    button{
+      display:block;
+      margin:25px auto 0;
+      padding:12px 24px;
+      border:none;
+      border-radius:25px;
+      background:#fff;
+      color:#ff5a8a;
+      font-size:16px;
+      cursor:pointer;
+    }
 
-/* 💝 IMAGE CARD */
-.card {
-  width: 85%;
-  max-width: 330px;
-  height: 430px;
-  border-radius: 26px;
-  overflow: hidden;
-  background: white;
-  box-shadow: 0 25px 45px rgba(0,0,0,0.35);
-  margin-bottom: 25px;
-}
+    /* Opening */
+    .cats{text-align:center;font-size:40px;animation:bounce 1.5s infinite;}
 
-/* SLIDER */
-.slider {
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
+    /* Gallery */
+    .gallery{display:grid;gap:15px;}
+    .memory{background:#fff;border-radius:18px;padding:10px;box-shadow:0 10px 25px rgba(0,0,0,.2);}    
+    .memory img{width:100%;border-radius:14px;}
+    .caption{text-align:center;margin-top:8px;color:#ff5a8a;font-weight:500;}
 
-.slide {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  transition: opacity 1.5s ease;
-}
+    /* Quiz */
+    .quiz{display:flex;flex-direction:column;gap:20px;}
+    .question{background:rgba(255,255,255,.9);padding:18px;border-radius:18px;box-shadow:0 10px 25px rgba(0,0,0,.2);}    
+    .question p{margin-bottom:12px;font-weight:600;color:#ff5a8a;}
+    .question button{
+      width:100%;margin:6px 0;padding:10px;border-radius:20px;border:none;
+      background:#ffe4ec;color:#ff3f7f;font-size:15px;cursor:pointer;transition:.3s;
+    }
+    .question button:hover{background:#ffb6c9;color:#fff;}
+    .correct{background:#4caf50!important;color:#fff!important;}
+    .wrong{background:#ff6b6b!important;color:#fff!important;}
 
-.slide.active {
-  opacity: 1;
-}
+    /* Letter */
+    .letter{
+      background:#fffaf0;
+      background-image:linear-gradient(rgba(0,0,0,.03) 1px,transparent 1px);
+      background-size:100% 26px;
+      padding:30px;border-radius:22px;
+      font-family:'Dancing Script',cursive;
+      font-size:1.15em;line-height:1.9;
+      box-shadow:0 20px 40px rgba(0,0,0,.25);
+    }
 
-/* TEXT CONTENT */
-.title {
-  font-size: 2.2em;
-  margin-bottom: 10px;
-}
+    .line{display:block;opacity:0;transform:translateY(10px);transition:.8s;margin-bottom:10px;}
+    .line.show{opacity:1;transform:translateY(0);}
+    .signature{font-size:1.4em;margin-top:20px;opacity:0;animation:sign 2s ease forwards;animation-delay:9s;}
 
-.subtitle {
-  font-size: 1em;
-  margin-bottom: 20px;
-  line-height: 1.5;
-}
+    /* Hearts */
+    .hearts{position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden;}
+    .heart{position:absolute;bottom:-20px;font-size:18px;animation:floatUp linear forwards;}
 
-/* BUTTON */
-button {
-  padding: 12px 28px;
-  border: none;
-  border-radius: 30px;
-  background: #e63946;
-  color: white;
-  font-size: 16px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-  cursor: pointer;
-}
-
-/* LETTER BOX */
-.letter {
-  max-width: 600px;
-  background: rgba(255,255,255,0.15);
-  padding: 25px;
-  border-radius: 20px;
-  line-height: 1.6;
-}
-
-/* INPUT */
-input {
-  padding: 12px;
-  width: 70%;
-  border-radius: 25px;
-  border: none;
-  text-align: center;
-  margin-top: 15px;
-}
-</style>
-</head>
-
-<body>
-
-<!-- 🌸 OPENING -->
-<section id="page1" class="active valentine-bg">
-
-  <div class="card">
-    <div class="slider">
-      <img src="cat1.jpg" class="slide active">
-      <img src="cat2.jpg" class="slide">
-      <img src="cat3.jpg" class="slide">
+    @keyframes floatUp{from{transform:translateY(0) scale(1);opacity:.9;}to{transform:translateY(-110vh) scale(1.6);opacity:0;}}
+    @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+    @keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+    @keyframes sign{from{opacity:0;transform:translateX(-20px);}to{opacity:1;transform:translateX(0);}}
+  </style></head>
+<body><div class="hearts"></div><audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio><div class="container"><!-- PAGE 1 --><section class="active">
+  <h1>For Hifza 💖</h1>
+  <div class="cats">🐱💗🐱</div>
+  <button onclick="next(1)">Open Surprise</button>
+</section><!-- PAGE 2 --><section>
+  <h1>Our Memories 📸</h1>
+  <div class="gallery">
+    <div class="memory"><img src="img1.jpg"><div class="caption">A moment I’ll never forget 💕</div></div>
+    <div class="memory"><img src="img2.jpg"><div class="caption">Your smile makes everything better 🌸</div></div>
+    <div class="memory"><img src="img3.jpg"><div class="caption">Forever my favorite memory 💖</div></div>
+  </div>
+  <button onclick="next(2)">Next</button>
+</section><!-- PAGE 3 QUIZ --><section>
+  <h1>Just a Small Quiz 💗</h1>
+  <div class="quiz">
+    <div class="question">
+      <p>1️⃣ What do I think about all the time?</p>
+      <button onclick="check(this,false)">Food 🍔</button>
+      <button onclick="check(this,true)">About You 💖</button>
+      <button onclick="check(this,false)">Sleep 😴</button>
+      <button onclick="check(this,false)">Mobile 📱</button>
+    </div>
+    <div class="question">
+      <p>2️⃣ What do I call you the most?</p>
+      <button onclick="check(this,false)">Queen 👑</button>
+      <button onclick="check(this,true)">Madam ji 🌸</button>
+      <button onclick="check(this,false)">Bestie 🤍</button>
+      <button onclick="check(this,false)">Heroine 🎬</button>
+    </div>
+    <div class="question">
+      <p>3️⃣ From now, what do you need to stop doing?</p>
+      <button onclick="check(this,false)">Overthinking 💭</button>
+      <button onclick="check(this,true)">Smoking 🚭</button>
+      <button onclick="check(this,false)">Smiling 😊</button>
+      <button onclick="check(this,false)">Dreaming ✨</button>
     </div>
   </div>
-
-  <h1 class="title">Hey Hifza 💖</h1>
-  <p class="subtitle">
-    I made this little world<br>
-    with smiles, care, and feelings…<br>
-    from <b>Hibbaan</b> 🐾
-  </p>
-
-  <button onclick="next(2)">Tap to Begin 💌</button>
-</section>
-
-<!-- 💕 MESSAGE -->
-<section id="page2" class="valentine-bg">
-  <h1>You Matter ❤️</h1>
-  <p class="subtitle">
-    Some people make life softer<br>
-    just by being there.<br>
-    You are one of them.
-  </p>
-  <button onclick="next(3)">Next</button>
-</section>
-
-<!-- ✉️ LETTER -->
-<section id="page3" class="valentine-bg">
-  <h1>A Letter For You ✨</h1>
+  <button onclick="next(3)">Read My Letter 💌</button>
+</section><!-- PAGE 4 LETTER --><section>
+  <h1>My Letter ✍️</h1>
   <div class="letter">
-    <p>
-      Dear <b>Hifza</b>,<br><br>
-      Somewhere between small talks and quiet smiles,  
-      you became important to me.<br><br>
-
-      This website isn’t just code —  
-      it’s a soft reflection of how gently  
-      you stay in my thoughts.<br><br>
-
-      Always smiling,<br>
-      <b>Hibbaan</b> ❤️
-    </p>
+    <span class="line">My dear Madam ji,</span>
+    <span class="line">I can’t explain my feelings after I found you.</span>
+    <span class="line">The first time I saw you, my heart raced like a fast train 🚅.</span>
+    <span class="line">From hi–hello to now, life feels incomplete without you.</span>
+    <span class="line">Whenever my mood is off, thinking of you fixes everything.</span>
+    <span class="line">Your trust and the stories you shared mean the world to me.</span>
+    <span class="line">Please leave the past behind and start a new journey.</span>
+    <span class="line">Take care of yourself and stop smoking 🚭.</span>
+    <span class="line">Focus on peace, Qur’an, and namaz 🌷.</span>
+    <span class="line">I am always here for you 💗.</span>
+    <span class="line"><b>I love you.</b></span>
+    <span class="line signature">— Hibbaan 💖</span>
   </div>
-  <br>
-  <button onclick="next(4)">Unlock Something 🧩</button>
-</section>
+</section></div><script>
+  const pages=document.querySelectorAll('section');
+  function next(i){pages.forEach(p=>p.classList.remove('active'));pages[i].classList.add('active');if(i===3)setTimeout(animateLetter,300);}
 
-<!-- 🧩 PUZZLE -->
-<section id="page4" class="valentine-bg">
-  <h1>Small Puzzle 🐱</h1>
-  <p class="subtitle">
-    Type the one name<br>
-    that makes me smile the most
-  </p>
-  <input id="answer" placeholder="Your answer">
-  <br><br>
-  <button onclick="check()">Unlock 💖</button>
-</section>
+  function animateLetter(){document.querySelectorAll('.line').forEach((l,i)=>{setTimeout(()=>l.classList.add('show'),i*900);});}
 
-<!-- 📸 MEMORIES -->
-<section id="page5" class="valentine-bg">
-  <h1>Memories ✨</h1>
-  <p class="subtitle">
-    • First conversation 💬<br>
-    • That one smile 😊<br>
-    • Every little moment 🌸
-  </p>
-  <button onclick="next(6)">Final</button>
-</section>
+  function check(btn,ok){const bs=btn.parentElement.querySelectorAll('button');bs.forEach(b=>b.disabled=true);if(ok){btn.classList.add('correct');}else{btn.classList.add('wrong');bs.forEach(b=>{if(b.onclick.toString().includes('true'))b.classList.add('correct');});}}
 
-<!-- ❤️ FINAL -->
-<section id="page6" class="valentine-bg">
-  <h1>Happy Valentine’s Day ❤️</h1>
-  <p class="subtitle">
-    Always special,<br>
-    always you — <b>Hifza</b>
-  </p>
-</section>
+  setInterval(()=>{const h=document.createElement('div');h.className='heart';h.innerHTML='💗';h.style.left=Math.random()*100+'vw';h.style.animationDuration=4+Math.random()*3+'s';document.querySelector('.hearts').appendChild(h);setTimeout(()=>h.remove(),7000);},500);
 
-<script>
-/* PAGE SWITCH */
-function next(n) {
-  document.querySelectorAll("section").forEach(s => s.classList.remove("active"));
-  document.getElementById("page" + n).classList.add("active");
-}
-
-/* PUZZLE */
-function check() {
-  let ans = document.getElementById("answer").value.toLowerCase();
-  if (ans === "hifza") {
-    next(5);
-  } else {
-    alert("Try again 💖");
-  }
-}
-
-/* SLIDER */
-let slides = document.querySelectorAll(".slide");
-let index = 0;
-
-setInterval(() => {
-  slides[index].classList.remove("active");
-  index = (index + 1) % slides.length;
-  slides[index].classList.add("active");
-}, 3500);
-</script>
-
-</body>
+  document.addEventListener('click',()=>{const m=document.getElementById('bgMusic');if(m.paused)m.play();},{once:true});
+</script></body>
   </html>
