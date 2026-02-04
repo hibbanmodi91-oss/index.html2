@@ -12,17 +12,9 @@
 
 body{
   font-family:'Patrick Hand',cursive;
+  background:linear-gradient(180deg,#8b2f4b,#f2cbd6);
   color:#5a1025;
   overflow-x:hidden;
-  animation:fadeIn 1s ease;
-}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
-
-canvas{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:0;
 }
 
 /* OVERLAY */
@@ -54,35 +46,20 @@ canvas{
 /* SECTIONS */
 section{
   min-height:100vh;
-  padding:60px 25px;
+  padding:30px;
   display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
   text-align:center;
-  position:relative;
-  z-index:1;
 }
-section::after{
-  content:"";
-  width:70%;
-  height:2px;
-  background:rgba(255,255,255,.4);
-  position:absolute;
-  bottom:20px;
-  border-radius:10px;
-}
-
-.intro{background:linear-gradient(180deg,#8b2f4b,#b1456b)}
-.memories-section{background:linear-gradient(180deg,#b1456b,#f2cbd6)}
-.quiz-section{background:linear-gradient(180deg,#f2cbd6,#ffffff)}
-.letter-section{background:#fffdf7}
 
 h1{
   font-family:'Pacifico',cursive;
   font-size:36px;
   margin-bottom:12px;
 }
+
 p{font-size:18px;max-width:700px;line-height:1.7}
 
 /* CATS */
@@ -92,7 +69,8 @@ p{font-size:18px;max-width:700px;line-height:1.7}
   margin-bottom:20px;
 }
 .cats img{
-  width:120px;
+  width:140px;
+  border-radius:20px;
   animation:float 3s ease-in-out infinite;
 }
 .cats img:nth-child(2){animation-delay:1s}
@@ -111,7 +89,9 @@ p{font-size:18px;max-width:700px;line-height:1.7}
   display:flex;
   transition:.5s ease;
 }
-.memory{min-width:100%}
+.memory{
+  min-width:100%;
+}
 .memory img{
   width:100%;
   border-radius:20px;
@@ -119,19 +99,18 @@ p{font-size:18px;max-width:700px;line-height:1.7}
 }
 .caption{margin-top:10px}
 
-.slider-controls{
-  margin-top:20px;
+/* CONTROLS */
+.controls{
   display:flex;
   gap:20px;
+  margin-top:20px;
 }
-.slider-controls button{
-  padding:10px 18px;
+.controls button{
   border:none;
+  padding:14px 20px;
   border-radius:50%;
   font-size:18px;
-  background:#fff;
   cursor:pointer;
-  box-shadow:0 5px 15px rgba(0,0,0,.2);
 }
 
 /* QUIZ */
@@ -157,16 +136,7 @@ p{font-size:18px;max-width:700px;line-height:1.7}
 .wrong{background:#ffcdd2 !important}
 
 /* LETTER */
-.lock{
-  padding:18px 30px;
-  border-radius:40px;
-  background:#fff;
-  cursor:pointer;
-  box-shadow:0 10px 30px rgba(0,0,0,.25);
-  margin-bottom:20px;
-}
 .letter{
-  display:none;
   background:#fffdf7;
   padding:30px;
   border-radius:20px;
@@ -183,7 +153,10 @@ p{font-size:18px;max-width:700px;line-height:1.7}
 }
 @keyframes fade{to{opacity:1}}
 
-.final-line{margin-top:40px;font-size:20px}
+.final-line{
+  margin-top:40px;
+  font-size:20px;
+}
 .flower{
   font-size:48px;
   margin-top:20px;
@@ -196,92 +169,100 @@ p{font-size:18px;max-width:700px;line-height:1.7}
 
 <body>
 
-<canvas id="hearts"></canvas>
-
 <!-- OVERLAY -->
 <div id="overlay">
   <button onclick="start()">Tap to Begin 💗</button>
 </div>
 
-<audio id="music" src="music.mp3" loop></audio>
+<audio id="music" src="./music.mp3" loop></audio>
 
-<!-- INTRO -->
-<section class="intro">
+<!-- OPENING -->
+<section>
   <div class="cats">
-    <img src="./images/cat1.gif"
-      onerror="this.onerror=null;this.src='https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif';">
-    <img src="./images/cat2.gif"
-      onerror="this.onerror=null;this.src='https://media.giphy.com/media/mlvseq9yvZhba/giphy.gif';">
+    <img src="./catA.png">
+    <img src="./catB.png">
   </div>
-
   <h1>Hey Hifza 💗</h1>
   <p>I made this little space with honesty, care, and feelings — from Hibbaan.</p>
 </section>
 
 <!-- MEMORIES -->
-<section class="memories-section">
+<section>
 <h1>Memories 🌷</h1>
-
-<div class="memory-slider" id="slider">
+<div class="memory-slider">
   <div class="track" id="track">
-    <div class="memory"><img src="./images/placeholder1.jpg"><div class="caption">A memory yet to be created 💗</div></div>
-    <div class="memory"><img src="./images/placeholder2.jpg"><div class="caption">A calm moment waiting 🌸</div></div>
-    <div class="memory"><img src="./images/placeholder3.jpg"><div class="caption">Laughter without reason ✨</div></div>
-    <div class="memory"><img src="./images/placeholder4.jpg"><div class="caption">A chapter worth remembering 🤍</div></div>
-    <div class="memory"><img src="./images/placeholder5.jpg"><div class="caption">A future moment already special 💖</div></div>
+    <div class="memory"><img src="./memory1.jpg"><div class="caption">A memory yet to be created 💗</div></div>
+    <div class="memory"><img src="./memory2.jpg"><div class="caption">A calm moment waiting 🌸</div></div>
+    <div class="memory"><img src="./memory3.jpg"><div class="caption">Laughter without reason ✨</div></div>
+    <div class="memory"><img src="./memory4.jpg"><div class="caption">A chapter worth remembering 🤍</div></div>
+    <div class="memory"><img src="./memory5.jpg"><div class="caption">A future moment already special 💖</div></div>
   </div>
 </div>
 
-<div class="slider-controls">
-  <button onclick="prevSlide()">⬅️</button>
-  <button onclick="nextSlide()">➡️</button>
+<div class="controls">
+  <button onclick="prev()">⬅</button>
+  <button onclick="next()">➡</button>
 </div>
 </section>
 
-<!-- QUIZ -->
-<section class="quiz-section">
+<!-- MCQ -->
+<section>
 <h1>A Small Quiz 💭</h1>
 <div class="quiz">
+
 <div class="q">
 <h3>1. What do I think about all the time?</h3>
 <button onclick="wrong(this)">Food 🍕</button>
 <button onclick="correct(this)">About you 💗</button>
 <button onclick="wrong(this)">Sleep 😴</button>
 </div>
+
 <div class="q">
 <h3>2. What do I call you most?</h3>
 <button onclick="wrong(this)">Bestie</button>
 <button onclick="correct(this)">Madam Ji 🌸</button>
 <button onclick="wrong(this)">Boss</button>
 </div>
+
 <div class="q">
 <h3>3. From now, what should you stop doing?</h3>
 <button onclick="correct(this)">Overthinking 🧠</button>
 <button onclick="wrong(this)">Smoking 🚭</button>
 <button onclick="wrong(this)">Smiling</button>
 </div>
+
 </div>
 </section>
 
-<!-- LETTER -->
-<section class="letter-section">
+<!-- FULL LETTER -->
+<section>
 <h1>For My Heart 💌</h1>
 
-<div class="lock" onclick="openLetter()">Tap to Open 💌</div>
-
-<div class="letter" id="letter">
+<div class="letter">
 <p style="--i:1">My Dear Madam Ji,</p>
+
 <p style="--i:2">I still can’t fully explain what I feel after you came into my life. The first time I saw you, my heart started beating like a bullet 🚅—fast, loud, and unstoppable.</p>
+
 <p style="--i:3">From a simple “Hi” and “Hello”, I slowly reached a place where life without you feels incomplete. You became a thought that stays with me quietly, even when everything else is loud.</p>
+
 <p style="--i:4">Whenever my mood is off, I just think about you—and somehow, in a few seconds, everything feels lighter.</p>
+
 <p style="--i:5">The trust you showed me by sharing your life, your struggles, and the pain caused by people who hurt you… that trust means more to me than words can say.</p>
+
 <p style="--i:6">I won’t lie—whenever I feel your mood is low, it hurts me deeply. I wonder what you’re thinking, what made you sad, and why you cry for people who don’t truly see your worth.</p>
+
 <p style="--i:7">So today, I only want to ask you one thing—please don’t be sad anymore. Leave whatever hurt you in the past behind and start a new journey—with hope, peace, and strength.</p>
+
 <p style="--i:8">Take care of yourself. Please stop smoking 🚭—you are too precious to harm yourself. You hold a bright future full of success, growth, and happiness.</p>
+
 <p style="--i:9">Keep moving closer to peace—by understanding the Qur’an and finding calm in namaz 🌷.</p>
+
 <p style="--i:10"><strong>I AM HERE FOR YOU 💗 Whenever you need me.</strong></p>
+
 <p style="--i:11">And the last thing I want to say, from the deepest place in my heart—</p>
+
 <p style="--i:12"><strong>I love you.</strong></p>
+
 <p style="--i:13">— Hibbaan</p>
 </div>
 
@@ -290,57 +271,23 @@ p{font-size:18px;max-width:700px;line-height:1.7}
 </section>
 
 <script>
-let idx=0,total=5;
+let idx=0;
 const track=document.getElementById('track');
-function update(){track.style.transform=`translateX(-${idx*100}%)`}
-function nextSlide(){idx=(idx+1)%total;update()}
-function prevSlide(){idx=(idx-1+total)%total;update()}
-setInterval(nextSlide,3500);
+const total=5;
 
-let startX=0;
-document.getElementById('slider').addEventListener('touchstart',e=>startX=e.touches[0].clientX);
-document.getElementById('slider').addEventListener('touchend',e=>{
-  let endX=e.changedTouches[0].clientX;
-  if(startX-endX>50) nextSlide();
-  if(endX-startX>50) prevSlide();
-});
+function update(){track.style.transform=`translateX(-${idx*100}%)`;}
+function next(){idx=(idx+1)%total;update();}
+function prev(){idx=(idx-1+total)%total;update();}
 
 function start(){
   const m=document.getElementById('music');
-  m.volume=0;m.play();
-  let v=0;
-  const fade=setInterval(()=>{
-    if(v<0.5){v+=0.02;m.volume=v}else clearInterval(fade);
-  },200);
+  m.play();
   document.getElementById('overlay').style.display='none';
 }
-function openLetter(){
-  document.querySelector('.lock').style.display='none';
-  document.getElementById('letter').style.display='block';
-}
+
 function correct(b){b.classList.add('correct')}
 function wrong(b){b.classList.add('wrong')}
-
-const c=document.getElementById('hearts'),ctx=c.getContext('2d');
-c.width=innerWidth;c.height=innerHeight;
-let hearts=[...Array(30)].map(()=>({
-  x:Math.random()*c.width,
-  y:Math.random()*c.height,
-  s:Math.random()*8+4,
-  v:Math.random()*0.5+0.2
-}));
-(function draw(){
-  ctx.clearRect(0,0,c.width,c.height);
-  ctx.fillStyle="rgba(255,105,180,.6)";
-  hearts.forEach(h=>{
-    ctx.beginPath();
-    ctx.arc(h.x,h.y,h.s,0,Math.PI*2);
-    ctx.fill();
-    h.y-=h.v;if(h.y<0)h.y=c.height;
-  });
-  requestAnimationFrame(draw);
-})();
 </script>
 
 </body>
-                   </html>
+  </html>
